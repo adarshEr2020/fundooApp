@@ -1,0 +1,21 @@
+.row-name{
+    display: flex;
+    justify-content:space-between;
+    margin-bottom: 20px;
+}
+
+#row-femail{
+    border: 500px;
+}
+.row-pass{
+    display: flex;
+    justify-content: space-between;
+}
+.signup-btn{
+    display: flex;
+    justify-content: space-between;
+}
+.text2{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

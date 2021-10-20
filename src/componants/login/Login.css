@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+.mainDiv {
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  min-height: 400px;
+  padding:3rem;
+  border:1px solid;
+  border-color:darkgray;
+  border-radius: 0.5rem;
+  text-align: center;
+  
+}
+.input-Fs{
+ margin-bottom: 10px;
+}
+
+#outlined-basic{
+  width: 320px;
+}
+h1 {
+  font-size: 24px;
+  font-weight: 400px;
+}
+
+h3 {
+  color: #202124;
+  font-size: 16px;
+  font-weight: 300px;
+}
+.forget{
+  /* border:1px solid blue; */
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.forgot-email{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.signup {
+  /* border:1px solid blue; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a{
+  text-decoration: none;
+}
+
+p{
+  font-size: 13px;
+  margin-bottom: 0px;
+}
+
+.text a{
+  display: flex;
+  justify-content:start ;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
