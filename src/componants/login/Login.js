@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import { login } from '../../services/service'
-import './Login.css'
-
+import './Login.scss'
 import { Button, TextField } from '@material-ui/core';
-// import { TextField } from '@material-ui/core';
-
+import { Link } from "react-router-dom";
 class Login extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
       email: "",
       password: ""
@@ -37,41 +34,92 @@ class Login extends Component {
       "email": this.state.email,
       "password": this.state.password
     }
-    login(obj);
+    login(obj)
+      .then((response) => {
+        console.log(response);
+        alert("you have login successfully")
+      })
+      .catch((error) => {
+        console.warn(error)
+      })
+
   }
 
   render() {
     return (
-
       <div id="main" className="mainDiv">
         <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" width="75" alt="google.img" />
         <h1>Sign in</h1>
         <h3>Use your Google Account</h3>
-        <form>
-          <div className="Fields">
-            <div className="input-Fs">
-              <TextField id="outlined-basic" label="Email or phone" variant="outlined" value={this.state.value} onChange={this.saveEmail} />
-            </div>
-            <div className="input-Fs">
-              <TextField id="outlined-basic" label="Password" variant="outlined" value={this.state.value} onChange={this.savePassword} />
-            </div>
+        <div className="Fields">
+          <div className="input-Fs">
+            <TextField
+              id="outlined-basic"
+              label="Email or phone"
+              variant="outlined"
+              value={
+                this.state.value
+              }
+              onChange={
+                this.saveEmail
+              }
+            />
           </div>
-          <div className="forget">
-            <div className="forgot-email"><a href="_blank" className="Fg-email">Forgot email?</a></div>
-            <div className="forgot-pass"><a href="_blank" className="Fg-email">Forgot password</a></div>
+          <div className="input-Fs">
+            <TextField
+              id="outlined-basic"
+              label="Password"
+              variant="outlined"
+              value={
+                this.state.value
+              }
+              onChange={
+                this.savePassword
+              }
+            />
           </div>
-          <div className="text">
-            <p>
-              Not your computer? Use Guest mode to sign in privately.
-            </p>
-            <a href="_blank" className="Fg-email">Learn more</a>
+        </div>
+        <div className="forget">
+          <div className="forgot-email">
+            <Link
+              underline="none"
+              to="" className="Fg-email">
+              Forgot email
+            </Link>
+          </div>
+          <div className="forgot-pass">
+            <Link
+              underline="none"
+              to="/forgotpass" className="Fg-email">
+              Forgot password
+            </Link>
+          </div>
+        </div>
+        <div className="text">
+          <p>
+            Not your computer? Use Guest mode to sign in privately.
+          </p>
+          <Link
+            underline="none"
+            to="">
+            Learn more
+          </Link>
 
-          </div>
-          <div className="signup">
-            <a href="_blank" className="Fg-email">Create an account</a>
-            <Button variant="contained" onClick={this.loginSubmit}>Login</Button> 
-          </div>
-        </form>
+        </div>
+        <div className="signup">
+          <Link
+            underline="none"
+            to="/signup">
+            Create an account
+          </Link>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={
+              this.loginSubmit
+            }>Login
+          </Button>
+        </div>
       </div >
     )
   }

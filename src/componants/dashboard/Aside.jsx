@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
-import RouterDom from './router/router'
-class App extends Component {
+import Box from '@material-ui/core'
+export default class Aside extends Component {
     render() {
         return (
             <div>
-                <RouterDom />
+                <Box>hello</Box>
             </div>
         )
     }
 }
-
-export default App
