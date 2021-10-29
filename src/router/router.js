@@ -11,11 +11,10 @@ function RouterDom() {
         <BrowserRouter>
             <Switch>
                 <Route exact path='/' component={Login} />
-                <Route path='/login' component={Login} />
                 <Route path='/signup' component={SignUp} />
                 <Route path='/forgotpass' component={ForgotPass} />
                 <Route path='/resetpassword' component={ResetPass} />
-                <Route path='/note-dashboard' component={NoteDashboard} />
+                <Route path='/dashboard' component={NoteDashboard} />
             </Switch>
         </BrowserRouter>
     )

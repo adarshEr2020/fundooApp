@@ -1,6 +1,6 @@
 import axios from "axios";
-const config={
-    headers:{
+const config = {
+    headers: {
         'Content-Type': 'application/json',
         Authorization: localStorage.getItem('fundooSigninToken')
     }
@@ -26,8 +26,8 @@ export const forgotpass = async (obj) => {
 }
 
 export const resetpass = async (obj) => {
-    
-    let response = await axios.post('http://fundoonotes.incubation.bridgelabz.com/api/user/reset-password', obj,config) 
+
+    let response = await axios.post('http://fundoonotes.incubation.bridgelabz.com/api/user/reset-password', obj, config)
     return response
 }
 
@@ -35,3 +35,8 @@ export const resetpass = async (obj) => {
 //     let response = await axios.get('https://dummy.restapiexample.com/api/v1/employees')
 //     console.log(response);
 // }
+
+export const takenote = async (obj) => {
+    let response = await axios.post('http://fundoonotes.incubation.bridgelabz.com/api/notes/addNotes',obj,config)
+    return response;
+}
