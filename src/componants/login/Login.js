@@ -38,6 +38,7 @@ class Login extends Component {
       .then((response) => {
         console.log(response);
         alert("you have login successfully")
+        
       })
       .catch((error) => {
         console.warn(error)

@@ -40,3 +40,10 @@ export const takenote = async (obj) => {
     let response = await axios.post('http://fundoonotes.incubation.bridgelabz.com/api/notes/addNotes',obj,config)
     return response;
 }
+
+export const requestNotesData = async ()=>{
+    
+    let response = await axios.get('http://fundoonotes.incubation.bridgelabz.com/api/notes/getNotesList',config)
+    
+    return response.data.data.data;
+}

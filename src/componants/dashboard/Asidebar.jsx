@@ -15,14 +15,16 @@ import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { Link } from "react-router-dom";
 
-class Asidebar extends Component {
+
+ class Asidebar extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      open: true,
+      open: false,
     };
   }
+
   // Method to toggle drawer open close
   handleDrawer = () => {
     this.setState({

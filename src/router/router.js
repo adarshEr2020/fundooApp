@@ -11,6 +11,7 @@ function RouterDom() {
         <BrowserRouter>
             <Switch>
                 <Route exact path='/' component={Login} />
+                <Route path='/login' component={Login} />
                 <Route path='/signup' component={SignUp} />
                 <Route path='/forgotpass' component={ForgotPass} />
                 <Route path='/resetpassword' component={ResetPass} />

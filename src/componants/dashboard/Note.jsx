@@ -1,35 +1,37 @@
 import React, { Component } from "react";
 import { takenote } from "../../services/service";
-import { Container, Paper, InputBase, IconButton } from "@mui/material";
+import { Container, Paper, InputBase, IconButton,Button } from "@mui/material";
 import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 import BrushOutlinedIcon from "@mui/icons-material/BrushOutlined";
 import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
-import { Box } from "@mui/system";
-import AddIcon from "@mui/icons-material/Add";
-import "./Note.scss";
 
+import "./Note.scss";
 
 export default class Note extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: "",
-      takeNote: "",
+      description: "",
+      open: true,
     };
   }
 
+  
   handleChange = (input) => (event) => {
     this.setState({
       [input]: event.target.value,
     });
   };
 
-  submitNote = () => {
-    // console.log(this.state);
-    const { title, takeNote } = this.state;
-    const obj = { title, takeNote };
+  submitNote = (props) => {
+    const { title, description } = this.state;
+    const obj = { title, description };
+
     console.log(obj);
+
+    // take request
     takenote(obj)
       .then((response) => {
         console.log(response);
@@ -38,46 +40,74 @@ export default class Note extends Component {
         console.warn(err);
       });
   };
+
+  expendIt = () => {
+    const { open } = this.state;
+    this.setState({
+      open: !open,
+    });
+  };
   render() {
     return (
       <Container className="main-div" maxWidth="sm">
         <Paper className="note" elevation={5}>
-          <Box>
-            <InputBase
-              className="inputText"
-              fullWidth
-              placeholder="Title"
-              name="Title"
-              onChange={this.handleChange("title")}
-            />
-            <InputBase
-              className="inputText"
-              multiline
-              placeholder="Take a note"
-              name="takeNote"
-              onChange={this.handleChange("takeNote")}
-              fullWidth
-            />
-          </Box>
-          <Box>
-            <IconButton>
-              <CheckBoxOutlinedIcon />
-            </IconButton>
-            <IconButton>
-              <BrushOutlinedIcon />
-            </IconButton>
-            <IconButton sx={{ p: "10px" }}>
-              <ImageOutlinedIcon />
-            </IconButton>
-            <IconButton sx={{ p: "10px" }}>
-              <ArchiveOutlinedIcon />
-            </IconButton>
-            
-            <IconButton size="large" onClick={this.submitNote}>
-              <AddIcon />
-            </IconButton>
-          </Box>
-          </Paper>
+          {!this.state.open? (
+            <div>
+              <InputBase
+                className="inputText"
+                fullWidth
+                placeholder="Title"
+                name="title"
+                onChange={this.handleChange("title")}
+              />
+            </div>
+          ) : null}
+          {this.state.open ? (
+            <div>
+              <InputBase
+                className="inputText"
+                multiline
+                placeholder="Take a note"
+                name="description"
+                onChange={this.handleChange("description")}
+                onClick={() => this.expendIt()}
+                fullWidth
+              />
+            </div>
+          ) : null}
+          {!this.state.open ? (
+            <div>
+              <InputBase
+                className="inputText"
+                multiline
+                placeholder="Take a note"
+                name="description"
+                onChange={this.handleChange("description")}
+                fullWidth
+              />
+            </div>
+          ) : null}
+
+          {!this.state.open ? (
+            <div>
+              <IconButton>
+                <CheckBoxOutlinedIcon />
+              </IconButton>
+              <IconButton>
+                <BrushOutlinedIcon />
+              </IconButton>
+              <IconButton sx={{ p: "10px" }}>
+                <ImageOutlinedIcon />
+              </IconButton>
+              <IconButton sx={{ p: "10px" }}>
+                <ArchiveOutlinedIcon />
+              </IconButton>
+              <Button className="closebtn" onClick={this.submitNote}>
+                close
+              </Button>
+            </div>
+          ) : null}
+        </Paper>
       </Container>
     );
   }

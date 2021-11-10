@@ -1,0 +1,33 @@
+.parentDiv{
+    display: flex;
+    // height: 300px;
+    // width: 300px;
+    // border: 1px solid gray;
+    // overflow:hidden;
+}
+.noteDiv{
+    // height: 300px;
+    // width: 300px;
+    // display: flex;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-left: 100px;
+    justify-content: center;
+    align-items: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+.textTitle{
+    font-size:16px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 14px;
+}
+
+.textDesc{
+    font-size: 14px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 14px;
+}
+.iconbtn{
+    display: flex;
+}

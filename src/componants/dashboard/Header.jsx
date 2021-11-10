@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./header.scss";
-import { IconButton, InputBase } from "@material-ui/core";
+import { IconButton, InputBase} from "@material-ui/core";
 import SearchIcon from "@mui/icons-material/Search";
 import MenuIcon from "@mui/icons-material/Menu";
 import RefreshSharpIcon from "@mui/icons-material/RefreshSharp";
@@ -17,7 +17,9 @@ export default class Header extends Component {
   }
 
   // click event in drawer menu
-  handleDrawerMenu = () => {};
+  handleDrawerToggle = () => {
+    this.props.handleDrawerToggle();
+  };
 
   render() {
     return (
@@ -25,9 +27,9 @@ export default class Header extends Component {
         <header>
           <div className="left-head">
             <div className="hmbrger-icon">
-              <IconButton onClick={this.handleDrawerMenu}>
-                <MenuIcon />
-              </IconButton>
+              <IconButton onClick={this.handleDrawerToggle}>
+                <MenuIcon/>
+              </IconButton> 
             </div>
             <div>
               <IconButton>
