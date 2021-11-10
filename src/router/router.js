@@ -10,7 +10,7 @@ function RouterDom() {
     return (
         <BrowserRouter>
             <Switch>
-                <Route exact path='/' component={Login} />
+                <Route exact path='/' component={Login}/>
                 <Route path='/login' component={Login} />
                 <Route path='/signup' component={SignUp} />
                 <Route path='/forgotpass' component={ForgotPass} />

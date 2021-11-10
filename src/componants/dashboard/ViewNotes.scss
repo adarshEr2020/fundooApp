@@ -1,33 +1,34 @@
-.parentDiv{
-    display: flex;
-    // height: 300px;
-    // width: 300px;
-    // border: 1px solid gray;
-    // overflow:hidden;
+.parentDiv {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  left: 200px;
+//   border: 1px solid red;
+  height: 70vh;
+  width: 80vw;
+  flex-wrap: wrap;
+  // border: 1px solid gray;
+  // overflow:hidden;
 }
-.noteDiv{
-    // height: 300px;
-    // width: 300px;
-    // display: flex;
-    border: 1px solid gray;
-    border-radius: 5px;
-    margin-left: 100px;
-    justify-content: center;
-    align-items: center;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    
+.noteDiv {
+
+//   border: 1px solid blue;
+  height: 150px;
+  border-radius: 5px;
+  justify-content: space-between;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-.textTitle{
-    font-size:16px;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    margin-left: 14px;
+.textTitle {
+  font-size: 16px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-left: 14px;
 }
 
-.textDesc{
-    font-size: 14px;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    margin-left: 14px;
+.textDesc {
+  font-size: 14px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-left: 14px;
 }
-.iconbtn{
-    display: flex;
+.iconbtn {
+  display: flex;
 }

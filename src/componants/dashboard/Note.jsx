@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { takenote } from "../../services/service";
 import { Container, Paper, InputBase, IconButton,Button } from "@mui/material";
-import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 import BrushOutlinedIcon from "@mui/icons-material/BrushOutlined";
 import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
-
+import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined';
+import AddAlertOutlinedIcon from '@mui/icons-material/AddAlertOutlined';
+import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import "./Note.scss";
 
 export default class Note extends Component {
@@ -91,16 +92,22 @@ export default class Note extends Component {
           {!this.state.open ? (
             <div>
               <IconButton>
-                <CheckBoxOutlinedIcon />
+                <AddAlertOutlinedIcon />
               </IconButton>
               <IconButton>
                 <BrushOutlinedIcon />
+              </IconButton>
+              <IconButton>
+                <ColorLensOutlinedIcon />
               </IconButton>
               <IconButton sx={{ p: "10px" }}>
                 <ImageOutlinedIcon />
               </IconButton>
               <IconButton sx={{ p: "10px" }}>
                 <ArchiveOutlinedIcon />
+              </IconButton>
+              <IconButton sx={{ p: "10px" }}>
+                <MoreVertOutlinedIcon />
               </IconButton>
               <Button className="closebtn" onClick={this.submitNote}>
                 close
