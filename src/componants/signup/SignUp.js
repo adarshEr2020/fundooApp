@@ -66,11 +66,12 @@ class SignUp extends Component {
     render() {
         return (
             <div className="mainDiv" id="signup-main">
-                <img
+                {/* <img
                     src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
                     width="75"
                     alt="google.img"
-                />
+                /> */}
+                <h1 className="FundooIcon">Fundoo</h1>
                 <h1 className="signup-form">Create your Google Account</h1>
 
                 <div className="row-name">

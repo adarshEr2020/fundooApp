@@ -34,11 +34,13 @@ export default class ForgotPass extends Component {
         return (
 
             <div className="mainDiv">
-                <img
+                {/* <img
                     src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
                     width="75"
                     alt="google.img"
-                />
+                /> */}
+
+                <h1 className="FundooIcon">Fundoo</h1>
                 <h2>Find your email</h2>
                 <p>Enter your phone number or recovery email</p>
                 <div className="em-field">

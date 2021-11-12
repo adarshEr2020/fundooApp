@@ -1,6 +1,9 @@
 .sidebar-div{
+    position: relative;
+    top:125px;
+    right:35px;
     margin-top: 65px;
-    .drawer{
-        margin-top: 65px;
-    }
+    // border: 1px solid red;
+    //  height: 50rem;
+    height: 100%;
 }

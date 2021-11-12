@@ -4,6 +4,14 @@
   overflow: hidden;
 
   .closebtn {
+    display: flex;
+    float: right;
+    margin-bottom: 0px;
+    margin-right: 25px;
+    color: gray;
+    // text-transform:none;
+    text-transform: lowercase;
+    font-size: 16px;
   }
   .inputText {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -12,5 +20,12 @@
     border: none;
     outline: none;
     padding: 10px;
+    overflow: hidden;
+  }
+
+  .main-desc-box {
+    display: flex;
+    border-radius: 10px;
+    // border:1px solid red
   }
 }

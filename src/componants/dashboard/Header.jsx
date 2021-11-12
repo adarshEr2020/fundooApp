@@ -8,6 +8,7 @@ import ViewStreamSharpIcon from "@mui/icons-material/ViewStreamSharp";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import AppsOutlinedIcon from "@mui/icons-material/AppsOutlined";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
+// import Asidebar from "./Asidebar";
 export default class Header extends Component {
   constructor(props) {
     super(props);
@@ -17,9 +18,9 @@ export default class Header extends Component {
   }
 
   // click event in drawer menu
-  handleDrawerToggle = () => {
-    this.props.handleDrawerToggle();
-  };
+  // handleDrawerToggle = () => {
+  //   this.props.handleDrawerToggle();
+  // };
 
   render() {
     return (
@@ -27,8 +28,9 @@ export default class Header extends Component {
         <header>
           <div className="left-head">
             <div className="hmbrger-icon">
-              <IconButton onClick={this.handleDrawerToggle}>
-                <MenuIcon/>
+              <IconButton>
+                 <MenuIcon/>
+                 {/* <Asidebar/> */}
               </IconButton> 
             </div>
             <div>
@@ -44,7 +46,7 @@ export default class Header extends Component {
             <span>Fundoo</span>
           </div>
           <div className="search-bar">
-            <SearchIcon />
+            <SearchIcon className="searchIcon"/>
             <InputBase placeholder="Search…" fullWidth />
           </div>
           <div className="right-head">

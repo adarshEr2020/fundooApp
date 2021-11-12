@@ -15,7 +15,6 @@ import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { Link } from "react-router-dom";
 
-
  class Asidebar extends Component {
   constructor(props) {
     super(props);
@@ -35,7 +34,7 @@ import { Link } from "react-router-dom";
   render() {
     const classes = this.props.classes;
     return (
-      <div className="sidebar-div" style={{ width: "240px"}}>
+      <div className="sidebar-div" style={{ width: "190px"}}>
         <Drawer
           classes={{ paper: classes.paper }}
           variant="permanent"
@@ -66,7 +65,7 @@ import { Link } from "react-router-dom";
   }
 }
 
-const drawerWidth = 240;
+const drawerWidth = 190;
 
 // Style
 const styleSheet = createStyleSheet({

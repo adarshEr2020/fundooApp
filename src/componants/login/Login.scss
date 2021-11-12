@@ -1,7 +1,6 @@
-
 body {
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 .mainDiv {
   background-color: white;
@@ -11,18 +10,22 @@ body {
   transform: translate(-50%, -50%);
   width: 350px;
   min-height: 400px;
-  padding:3rem;
-  border:1px solid;
-  border-color:darkgray;
+  padding: 3rem;
+  border: 1px solid;
+  border-color: darkgray;
   border-radius: 0.5rem;
   text-align: center;
-  
-}
-.input-Fs{
- margin-bottom: 10px;
 }
 
-#outlined-basic{
+.FundooIcon {
+  font-size: 2em;
+  color: royalblue;
+}
+.input-Fs {
+  margin-bottom: 10px;
+}
+
+#outlined-basic {
   width: 320px;
 }
 h1 {
@@ -35,7 +38,7 @@ h3 {
   font-size: 16px;
   font-weight: 300px;
 }
-.forget{
+.forget {
   /* border:1px solid blue; */
   display: flex;
   justify-content: space-between;
@@ -44,7 +47,7 @@ h3 {
   margin-bottom: 10px;
 }
 
-.forgot-email{
+.forgot-email {
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -55,16 +58,16 @@ h3 {
   align-items: center;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-p{
+p {
   font-size: 13px;
   margin-bottom: 0px;
 }
 
-.text a{
+.text a {
   display: flex;
   font-size: 13px;
   margin-bottom: 10px;

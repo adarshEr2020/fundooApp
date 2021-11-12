@@ -3,16 +3,17 @@
   position: relative;
   justify-content: space-between;
   left: 200px;
-//   border: 1px solid red;
+  
   height: 70vh;
   width: 80vw;
   flex-wrap: wrap;
-  // border: 1px solid gray;
+  // border: 1px solid red;
   // overflow:hidden;
 }
 .noteDiv {
 
-//   border: 1px solid blue;
+  // border: 1px solid blue;
+  // background-color: powderblue;
   height: 150px;
   border-radius: 5px;
   justify-content: space-between;
@@ -30,5 +31,6 @@
   margin-left: 14px;
 }
 .iconbtn {
+  margin-top: 20px;
   display: flex;
 }
