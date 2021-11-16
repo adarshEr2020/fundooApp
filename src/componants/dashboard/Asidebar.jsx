@@ -14,6 +14,7 @@ import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutl
 import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { Link } from "react-router-dom";
+import Archive from "./Archive";
 
  class Asidebar extends Component {
   constructor(props) {
@@ -93,7 +94,7 @@ const asideMenuItems = [
     linkTo: "/main",
   },
   {
-    text: "Archive",
+    text: "archive",
     icon: <ArchiveOutlinedIcon />,
     linkTo: "/archive",
   },

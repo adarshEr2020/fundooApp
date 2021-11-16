@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ViewNotes.scss";
 import BrushOutlinedIcon from "@mui/icons-material/BrushOutlined";
 import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
@@ -7,19 +7,32 @@ import { IconButton, Paper } from "@material-ui/core";
 import ColorLensOutlinedIcon from "@mui/icons-material/ColorLensOutlined";
 import AddAlertOutlinedIcon from "@mui/icons-material/AddAlertOutlined";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
+import { getArchiveNote } from "../../services/service";
+export default function Archive() {
+  const [archiveArr, setArchiveArr] = useState([]);
 
-export default function ViewNotes({ data, handleArchive }) {
-  console.log("response data inside viewnote", data);
+  getArchiveNote()
+    .then((response) => {
+      setArchiveArr({
+        archiveArr: response.data,
+      });
+    })
+    .catch((err) => {
+      console.warn(err);
+    });
+
   return (
     <div className="parentDiv">
-      {data.map((note, index) => {
+      {archiveArr.map((note, index) => {
         if (note?.isArchived === false) {
           return (
-            <Paper key={index} className="noteDiv" elevation={5} style={{ backgroundColor: `${note.color}` }}>
-              <div>
+            <Paper className="noteDiv" elevation={5}>
+              <div key={index}>
                 <p className="textTitle">{note.title}</p>
                 <p className="textDesc">{note.description}</p>
               </div>
+              <h5>achive note</h5>
+              <h6>achive note paper</h6>
               <div className="iconbtn">
                 <IconButton>
                   <AddAlertOutlinedIcon />
@@ -34,7 +47,7 @@ export default function ViewNotes({ data, handleArchive }) {
                   <ImageOutlinedIcon />
                 </IconButton>
                 <IconButton sx={{ p: "10px" }}>
-                  <ArchiveOutlinedIcon onClick={() => handleArchive(note)} />
+                  <ArchiveOutlinedIcon />
                 </IconButton>
                 <IconButton sx={{ p: "10px" }}>
                   <MoreVertOutlinedIcon />

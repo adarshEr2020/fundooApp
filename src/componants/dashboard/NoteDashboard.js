@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { requestNotesData } from '../../services/service'
+import { addTorchiveNotes, requestNotesData } from '../../services/service'
 import Header from './Header'
 import './Asidebar.scss'
 import Note from './Note'
@@ -12,32 +12,38 @@ export default class NoteDashboard extends Component {
         this.state = {
             open: false,
             data: [],
-            isAchiveNote: [],
+            isArchived: false
         }
     }
 
+    // request to archive note
+    handleArchive = (note) => {
+        this.setState({
+            ...note,
+            isArchived: !this.state.isArchived
+        })
+        const obj = {
+            noteIdList: [note.id],
+            isArchived: true
+        }
+        addTorchiveNotes(obj)
+            .then((response) => {
+                console.log(response);
+            }).catch((err) => {
+                console.warn(err);
+            })
+    }
+
+    // request data of all notes
     componentDidMount() {
         requestNotesData().then((response) => {
-            console.log(response);
+            console.log("request data", response);
             this.setState({
                 data: response
             })
-            this.handleArchiveSetState()
         }).catch((err) => {
             console.log(err);
         })
-    }
-
-    handleArchiveSetState = () => {
-        this.setState({
-            isAchiveNote: this.filterNotes()
-        })
-    }
-    filterNotes = () => {
-        const filterData = this.state.data.filter((element) => {
-            return !element.isArchived && !element.isDeleted;
-        });
-        return filterData;
     }
 
     handleDrawerToggle = () => {
@@ -45,19 +51,18 @@ export default class NoteDashboard extends Component {
             open: !this.state.open,
         });
     }
+
+
     render() {
-        const { isAchiveNote, data } = this.state
-        console.log("note data" + data +"\nfilter note"+isAchiveNote);
-
-
+        const { data } = this.state
         return (
             <div>
-                <Header/>
+                <Header />
                 <Asidebar
                     handleDrawerToggle={this.handleDrawerToggle}
                     open={this.state.open} />
                 <Note />
-                <ViewNotes data={data} />
+                <ViewNotes data={data} handleArchive={this.handleArchive} />
             </div>
         )
     }

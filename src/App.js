@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import RouterDom from './router/router'
+import Routers from './router/router'
 class App extends Component {
     render() {
         return (
             <div>
-                <RouterDom />
+                <Routers />
             </div>
         )
     }

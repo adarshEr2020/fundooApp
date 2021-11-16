@@ -4,9 +4,9 @@ import { Container, Paper, InputBase, IconButton, Button } from "@mui/material";
 import BrushOutlinedIcon from "@mui/icons-material/BrushOutlined";
 import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
-import ColorLensOutlinedIcon from "@mui/icons-material/ColorLensOutlined";
 import AddAlertOutlinedIcon from "@mui/icons-material/AddAlertOutlined";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
+import ColorPopper from "../dashboard/ColorPopper";
 import "./Note.scss";
 
 export default class Note extends Component {
@@ -17,9 +17,19 @@ export default class Note extends Component {
       description: "",
       open: true,
       isArchived: false,
-      color: "#fff",
+      color: "#fffFF",
     };
   }
+  // handle note color
+  handleNoteColor = (color1) => {
+    this.setState(
+      (prestate) => ({
+        ...prestate,
+        color: color1,
+      }),
+      () => console.log("after change color", this.state)
+    );
+  };
 
   handleChange = (input) => (event) => {
     this.setState({
@@ -30,13 +40,12 @@ export default class Note extends Component {
   haldleIsArchive = () => {
     this.setState({
       isArchived: !this.state.isArchived,
-      
     });
-    alert("isArchived clicked : " + this.state.isArchived);
+    console.log("isArchived clicked : " + this.state.isArchived);
   };
-  
+
   submitNote = () => {
-    const { title, description, isArchived, color } = this.state;
+    const { title, description, isArchived, color} = this.state;
     const obj = { title, description, isArchived, color };
 
     console.log(obj);
@@ -44,7 +53,7 @@ export default class Note extends Component {
     // take request
     takenote(obj)
       .then((response) => {
-        console.log(response);
+        console.log("takenote", response);
       })
       .catch((err) => {
         console.warn(err);
@@ -57,10 +66,15 @@ export default class Note extends Component {
       open: !open,
     });
   };
+
   render() {
     return (
       <Container className="main-div" maxWidth="sm">
-        <Paper className="note" elevation={5}>
+        <Paper
+          className="note"
+          elevation={5}
+          style={{ backgroundColor: `${this.state.color}` }}
+        >
           {!this.state.open ? (
             <div>
               <InputBase
@@ -84,7 +98,7 @@ export default class Note extends Component {
                 fullWidth
               />
               <IconButton sx={{ p: "10px" }}>
-                <ArchiveOutlinedIcon/>
+                <ArchiveOutlinedIcon />
               </IconButton>
               <IconButton>
                 <BrushOutlinedIcon />
@@ -116,7 +130,7 @@ export default class Note extends Component {
                 <BrushOutlinedIcon />
               </IconButton>
               <IconButton>
-                <ColorLensOutlinedIcon />
+                <ColorPopper handleNoteColor={this.handleNoteColor} />
               </IconButton>
               <IconButton sx={{ p: "10px" }}>
                 <ImageOutlinedIcon />

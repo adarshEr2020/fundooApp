@@ -11,7 +11,7 @@ class SignUp extends Component {
         this.state = {
             firstName: '',
             lastName: '',
-            service: 'basic',
+            service: 'advance',
             email: '',
             password: '',
             passConfirm: ''

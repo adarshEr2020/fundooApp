@@ -1,0 +1,13 @@
+.box-color-main{
+    display:flexbox;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 1px solid gray;
+    padding: 5px;
+}
+.box-color{
+    border-radius: 50%;
+    justify-content: center;
+    flex-wrap: wrap ;
+    align-items: center;
+}

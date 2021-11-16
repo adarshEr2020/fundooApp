@@ -5,8 +5,9 @@ import Login from "../componants/login/Login";
 import ForgotPass from "../componants/forgotPass/ForgotPass";
 import ResetPass from "../componants/forgotPass/ResetPass"
 import NoteDashboard from "../componants/dashboard/NoteDashboard";
+import Archive from "../componants/dashboard/Archive";
 
-function RouterDom() {
+function Routers() {
     return (
         <BrowserRouter>
             <Switch>
@@ -16,9 +17,10 @@ function RouterDom() {
                 <Route path='/forgotpass' component={ForgotPass} />
                 <Route path='/resetpassword' component={ResetPass} />
                 <Route path='/dashboard' component={NoteDashboard} />
+                <Route path='/archive' component={Archive} />
             </Switch>
         </BrowserRouter>
     )
 }
 
-export default RouterDom
+export default Routers
