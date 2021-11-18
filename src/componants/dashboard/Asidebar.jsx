@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import './Asidebar.scss'
+import "./Asidebar.scss";
 import { styled } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -14,9 +14,8 @@ import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutl
 import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { Link } from "react-router-dom";
-import Archive from "./Archive";
 
- class Asidebar extends Component {
+class Asidebar extends Component {
   constructor(props) {
     super(props);
 
@@ -35,8 +34,9 @@ import Archive from "./Archive";
   render() {
     const classes = this.props.classes;
     return (
-      <div className="sidebar-div" style={{ width: "190px"}}>
+      <div className="sidebar-div" style={{ width: "190px" }}>
         <Drawer
+          style={{ marginTop: 100 }}
           classes={{ paper: classes.paper }}
           variant="permanent"
           open={this.state.open}

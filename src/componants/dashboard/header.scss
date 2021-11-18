@@ -1,37 +1,42 @@
 // .head-main
-header{
-    display:flex;
-    justify-content:space-between;
-    margin-top:2px;
-    border-bottom: 0.1px solid grey;
+header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2px;
+  border-bottom: 0.1px solid grey;
+  align-items: center;
+  height: 60px;
+  // border: 1px solid blue;
+.hmbrger-icon{
+    margin: 10px;
+}
+  .left-head {
+    display: flex;
+    // border:1px solid gray;
+    justify-content: space-between;
+    // justify-items: center;
     align-items: center;
-    height: 60px;
-    // border: 1px solid blue;
+  }
 
-    .left-head{
-        display: flex;
-        // border:1px solid gray;
-        justify-content: space-between;
-        // justify-items: center;
-        align-items: center;
-    }
-    
-    .right-head{
-        display: flex;
-    }
-
+  .right-head {
+    display: flex;
+    justify-content: baseline;
+  }
 }
 
-.search-bar{
-    display: flex;
-    align-items: center;
-    width: 686px;
-    height: 35px;
-    border:1px solid rgb(235, 228, 228);
-    border-radius: 10px;
-    
-   .searchIcon{
+.search-bar {
+  display: flex;
+  align-items: center;
+  width: 686px;
+  height: 35px;
+  border: 1px solid rgb(235, 228, 228);
+  border-radius: 10px;
+
+  .searchIcon {
     margin-left: 10px;
     color: grey;
+  }
 }
+.profile-icon {
+  margin: 5px;
 }

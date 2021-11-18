@@ -17,7 +17,7 @@ export default class Note extends Component {
       description: "",
       open: true,
       isArchived: false,
-      color: "#fffFF",
+      color: "",
     };
   }
   // handle note color
@@ -45,7 +45,7 @@ export default class Note extends Component {
   };
 
   submitNote = () => {
-    const { title, description, isArchived, color} = this.state;
+    const { title, description, isArchived, color } = this.state;
     const obj = { title, description, isArchived, color };
 
     console.log(obj);
@@ -66,6 +66,7 @@ export default class Note extends Component {
       open: !open,
     });
   };
+ 
 
   render() {
     return (

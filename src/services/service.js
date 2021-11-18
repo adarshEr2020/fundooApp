@@ -33,9 +33,10 @@ export const resetpass = async (obj) => {
     return response
 }
 
+// below request for notes
 export const takenote = async (obj) => {
     let response = await axios.post(`${url}/notes/addNotes`, obj, config)
-    return response;
+    return response.data;
 }
 
 export const requestNotesData = async () => {
@@ -43,13 +44,21 @@ export const requestNotesData = async () => {
     return response.data.data.data;
 }
 
-export const getArchiveNote = async () => {
+export const getArchiveNoteList = async () => {
     let response = await axios.get(`${url}/notes/getArchiveNotesList`, config)
     return response.data.data;
 }
 
-export const addTorchiveNotes = async (obj) => {
-    console.log(obj);
+export const addToArchiveNotes = async (obj) => {
     let response = await axios.post(`${url}/notes/archiveNotes`, obj, config)
-    return response.data;
+    return response.data.data;
+}
+export const changesColorNotes = async (obj) => {
+    let response = await axios.post(`${url}/notes/changesColorNotes`, obj, config)
+    return response.data.data;
+}
+
+export const updateNotes = (obj) => {
+    let response = axios.post(`${url}/notes/updateNotes`, obj, config)
+    return response;
 }

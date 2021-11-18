@@ -1,19 +1,14 @@
 .parentDiv {
+  margin-top: 10px;
   display: flex;
   position: relative;
   justify-content: space-between;
   left: 200px;
-  
   height: 70vh;
   width: 80vw;
   flex-wrap: wrap;
-  // border: 1px solid red;
-  // overflow:hidden;
 }
 .noteDiv {
-
-  // border: 1px solid blue;
-  // background-color: powderblue;
   height: 150px;
   border-radius: 5px;
   justify-content: space-between;
@@ -33,4 +28,14 @@
 .iconbtn {
   margin-top: 20px;
   display: flex;
+}
+
+.closebtn {
+  float: right;
+}
+
+.inputText {
+  // border: 1px solid red;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-left: 15px;
 }

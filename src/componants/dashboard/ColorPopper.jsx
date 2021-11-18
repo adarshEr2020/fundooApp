@@ -19,8 +19,8 @@ export default function ColorPopper(props) {
   const id = canBeOpen ? "transition-popper" : undefined;
 
   // distructring props to handleNoteColor
-  const {handleNoteColor} =  props
-  
+  const { handleNoteColor ,noteId} = props;
+
   const colors = [
     "#f44336",
     "#e91e63",
@@ -39,7 +39,7 @@ export default function ColorPopper(props) {
     "#ff9800",
     "#ff5722",
   ];
- 
+
   return (
     <div>
       <IconButton aria-describedby={id} type="button" onClick={handleClick}>
@@ -49,7 +49,7 @@ export default function ColorPopper(props) {
         {({ TransitionProps }) => (
           <Fade {...TransitionProps} timeout={350}>
             <Box
-              sx={{      
+              sx={{
                 bgcolor: "background.paper",
                 height: "120px",
                 width: "130px",
@@ -64,7 +64,7 @@ export default function ColorPopper(props) {
                     className="box-color"
                     sx={{ width: "30px", height: "30px" }}
                     style={{ backgroundColor: `${color}` }}
-                    onClick={()=>handleNoteColor(color)}
+                    onClick={() => handleNoteColor(color,noteId)}
                   />
                 </div>
               ))}

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import "./Archive.scss";
 import "./ViewNotes.scss";
 import BrushOutlinedIcon from "@mui/icons-material/BrushOutlined";
 import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
@@ -7,32 +8,45 @@ import { IconButton, Paper } from "@material-ui/core";
 import ColorLensOutlinedIcon from "@mui/icons-material/ColorLensOutlined";
 import AddAlertOutlinedIcon from "@mui/icons-material/AddAlertOutlined";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
-import { getArchiveNote } from "../../services/service";
+import { getArchiveNoteList } from "../../services/service";
+import Header from "./Header";
+import Asidebar from "./Asidebar";
+
 export default function Archive() {
   const [archiveArr, setArchiveArr] = useState([]);
 
-  getArchiveNote()
-    .then((response) => {
-      setArchiveArr({
-        archiveArr: response.data,
+  // request for archive note
+  useEffect(() => {
+    getArchiveNoteList()
+      .then((response) => {
+        console.log("getArchiveNoteList", response);
+        setArchiveArr(response.data);
+      })
+      .catch((err) => {
+        console.warn(err);
       });
-    })
-    .catch((err) => {
-      console.warn(err);
-    });
+  }, []);
 
+  console.log("archiveArr", archiveArr);
   return (
-    <div className="parentDiv">
-      {archiveArr.map((note, index) => {
-        if (note?.isArchived === false) {
+    <div>
+      <Header/>
+      <Asidebar/>
+      <h2 className="text text1">Archive note- </h2>
+      <div className="parentDiv">
+        {archiveArr.map((note, index) => {
           return (
-            <Paper className="noteDiv" elevation={5}>
-              <div key={index}>
-                <p className="textTitle">{note.title}</p>
-                <p className="textDesc">{note.description}</p>
+            <Paper
+              className="noteDiv"
+              elevation={5}
+              key={index}
+              style={{ backgroundColor: `${note.color}` }}
+            >
+              <div>
+                <div className="textTitle">{note.title}</div>
+                <div className="textDesc">{note.description}</div>
               </div>
-              <h5>achive note</h5>
-              <h6>achive note paper</h6>
+
               <div className="iconbtn">
                 <IconButton>
                   <AddAlertOutlinedIcon />
@@ -55,8 +69,8 @@ export default function Archive() {
               </div>
             </Paper>
           );
-        }
-      })}
+        })}
+      </div>
     </div>
   );
 }

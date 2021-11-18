@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
-import { addTorchiveNotes, requestNotesData } from '../../services/service'
+import { addToArchiveNotes, requestNotesData } from '../../services/service'
 import Header from './Header'
 import './Asidebar.scss'
 import Note from './Note'
 import ViewNotes from './ViewNotes'
 import Asidebar from './Asidebar'
-
 export default class NoteDashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
             open: false,
             data: [],
-            isArchived: false
+            isArchived: false,
+            color: ''
         }
     }
 
@@ -26,7 +26,7 @@ export default class NoteDashboard extends Component {
             noteIdList: [note.id],
             isArchived: true
         }
-        addTorchiveNotes(obj)
+        addToArchiveNotes(obj)
             .then((response) => {
                 console.log(response);
             }).catch((err) => {
@@ -62,7 +62,10 @@ export default class NoteDashboard extends Component {
                     handleDrawerToggle={this.handleDrawerToggle}
                     open={this.state.open} />
                 <Note />
-                <ViewNotes data={data} handleArchive={this.handleArchive} />
+                <ViewNotes data={data} handleArchive={this.handleArchive} handleNoteColor={this.handleNoteColor} />
+                <div style={{ position: "relative", left: "400px" }}>
+                </div>
+
             </div>
         )
     }
