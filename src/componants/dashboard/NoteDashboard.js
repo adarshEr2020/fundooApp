@@ -17,6 +17,7 @@ export default class NoteDashboard extends Component {
     }
 
     // request to archive note
+
     handleArchive = (note) => {
         this.setState({
             ...note,
@@ -29,15 +30,16 @@ export default class NoteDashboard extends Component {
         addToArchiveNotes(obj)
             .then((response) => {
                 console.log(response);
+                this.getAllNotes()
             }).catch((err) => {
                 console.warn(err);
             })
     }
 
     // request data of all notes
-    componentDidMount() {
+    getAllNotes = () => {
         requestNotesData().then((response) => {
-            console.log("request data", response);
+            console.log("requested all notes", response);
             this.setState({
                 data: response
             })
@@ -45,14 +47,16 @@ export default class NoteDashboard extends Component {
             console.log(err);
         })
     }
+    componentDidMount() {
+        this.getAllNotes()
+    }
 
     handleDrawerToggle = () => {
         this.setState({
             open: !this.state.open,
         });
     }
-
-
+    
     render() {
         const { data } = this.state
         return (
@@ -61,11 +65,12 @@ export default class NoteDashboard extends Component {
                 <Asidebar
                     handleDrawerToggle={this.handleDrawerToggle}
                     open={this.state.open} />
-                <Note />
-                <ViewNotes data={data} handleArchive={this.handleArchive} handleNoteColor={this.handleNoteColor} />
-                <div style={{ position: "relative", left: "400px" }}>
-                </div>
-
+                <Note getAllNotes={this.getAllNotes} />
+                <ViewNotes data={data}
+                    handleArchive={this.handleArchive}
+                    handleNoteColor={this.handleNoteColor}
+                    getAllNotes={this.getAllNotes}
+                />
             </div>
         )
     }

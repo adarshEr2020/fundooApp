@@ -1,18 +1,23 @@
 import React, { useState } from "react";
-import { changesColorNotes, updateNotes } from "../../services/service";
+import {
+  changesColorNotes,
+  updateNotes,
+  addToTrashNotes,
+} from "../../services/service";
 import ColorPopper from "./ColorPopper";
 import "./ViewNotes.scss";
+import { IconButton, Paper, Button } from "@material-ui/core";
 import BrushOutlinedIcon from "@mui/icons-material/BrushOutlined";
 import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
-import { IconButton, Paper, Button } from "@material-ui/core";
 import AddAlertOutlinedIcon from "@mui/icons-material/AddAlertOutlined";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { InputBase } from "@mui/material";
 
-export default function ViewNotes({ data, handleArchive }) {
+export default function ViewNotes({ data, handleArchive, getAllNotes }) {
   // console.log("response data inside viewnote", data);
   const [color, setColor] = useState("");
   const [note, setNote] = useState({
@@ -23,6 +28,7 @@ export default function ViewNotes({ data, handleArchive }) {
 
   const [open, setOpen] = useState(false);
 
+  // open madal for update
   const handleOpen = (title, description, id) => {
     setOpen(true);
     setNote({
@@ -36,16 +42,14 @@ export default function ViewNotes({ data, handleArchive }) {
 
   // handle note color
   const handleNoteColor = (color1, id) => {
-    console.log("id", id);
     setColor(color1);
-    // console.log(color);
     const obj = {
       noteIdList: [id],
       color: color,
     };
     changesColorNotes(obj)
       .then((response) => {
-        console.log("change color", response);
+        getAllNotes();
       })
       .catch((err) => {
         console.warn(err);
@@ -74,9 +78,30 @@ export default function ViewNotes({ data, handleArchive }) {
       .then((response) => {
         console.log(response);
         setOpen(false);
+        getAllNotes();
       })
       .catch((err) => {
         console.warn(err);
+      });
+  };
+
+  // trash note
+  const trashNote = (note) => {
+    // console.log("tracccf", note);
+    let obj = {
+      title:note.title,
+      description:note.description,
+      id:note.id,
+      userId:note.user.id
+    };
+    console.log("obj", obj);
+    addToTrashNotes(obj)
+      .then((response) => {
+        console.log("trash response", response);
+        getAllNotes();
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
@@ -88,15 +113,16 @@ export default function ViewNotes({ data, handleArchive }) {
     width: 500,
     height: 140,
     bgcolor: "background.paper",
-    boxShadow: 24,
+    boxShadow: 30,
     p: 1,
+    outline: "none",
   };
 
   return (
     <div className="parentDiv">
       {/* view note */}
       {data.map((note, index) => {
-        if (note?.isArchived === false) {
+        if (note.isArchived === false) {
           return (
             <Paper
               key={index}
@@ -130,6 +156,9 @@ export default function ViewNotes({ data, handleArchive }) {
                 </IconButton>
                 <IconButton sx={{ p: "10px" }}>
                   <ArchiveOutlinedIcon onClick={() => handleArchive(note)} />
+                </IconButton>
+                <IconButton sx={{ p: "10px" }}>
+                  <DeleteOutlinedIcon onClick={() => trashNote(note)} />
                 </IconButton>
                 <IconButton sx={{ p: "10px" }}>
                   <MoreVertOutlinedIcon />

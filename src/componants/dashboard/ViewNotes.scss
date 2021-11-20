@@ -4,7 +4,7 @@
   position: relative;
   justify-content: space-between;
   left: 200px;
-  height: 70vh;
+  // height: 70vh;
   width: 80vw;
   flex-wrap: wrap;
 }
@@ -13,6 +13,7 @@
   border-radius: 5px;
   justify-content: space-between;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  
 }
 .textTitle {
   font-size: 16px;
@@ -35,7 +36,7 @@
 }
 
 .inputText {
-  // border: 1px solid red;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin-left: 15px;
+  border: none;
 }

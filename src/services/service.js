@@ -58,7 +58,17 @@ export const changesColorNotes = async (obj) => {
     return response.data.data;
 }
 
-export const updateNotes = (obj) => {
-    let response = axios.post(`${url}/notes/updateNotes`, obj, config)
+export const updateNotes = async (obj) => {
+    let response = await axios.post(`${url}/notes/updateNotes`, obj, config)
+    return response;
+}
+
+export const addToTrashNotes = async (obj) => {
+    let response = await axios.post(`${url}/notes/trashNotes`, obj, config);
+    return response;
+}
+
+export const getAllTrashNotes = async()=>{
+    let response = await axios.get(`${url}/notes/getTrashNotesList`,config)
     return response;
 }

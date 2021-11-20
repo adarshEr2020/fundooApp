@@ -108,7 +108,6 @@ class Login extends Component {
             to="">
             Learn more
           </Link>
-
         </div>
         <div className="signup">
           <Link

@@ -20,6 +20,7 @@ export default class Note extends Component {
       color: "",
     };
   }
+  
   // handle note color
   handleNoteColor = (color1) => {
     this.setState(
@@ -54,6 +55,11 @@ export default class Note extends Component {
     takenote(obj)
       .then((response) => {
         console.log("takenote", response);
+        this.props.getAllNotes();
+        // this.setState({
+        //   open: !this.state.open,
+        // });
+        this.expendIt();
       })
       .catch((err) => {
         console.warn(err);
@@ -66,10 +72,9 @@ export default class Note extends Component {
       open: !open,
     });
   };
- 
 
   render() {
-    return (
+    return (   
       <Container className="main-div" maxWidth="sm">
         <Paper
           className="note"

@@ -8,18 +8,18 @@ import { IconButton, Paper } from "@material-ui/core";
 import ColorLensOutlinedIcon from "@mui/icons-material/ColorLensOutlined";
 import AddAlertOutlinedIcon from "@mui/icons-material/AddAlertOutlined";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
-import { getArchiveNoteList } from "../../services/service";
+import { addToArchiveNotes, getArchiveNoteList } from "../../services/service";
 import Header from "./Header";
 import Asidebar from "./Asidebar";
 
 export default function Archive() {
   const [archiveArr, setArchiveArr] = useState([]);
+  const [isArchived,setIsArchived] = useState(true)
 
   // request for archive note
   useEffect(() => {
     getArchiveNoteList()
       .then((response) => {
-        console.log("getArchiveNoteList", response);
         setArchiveArr(response.data);
       })
       .catch((err) => {
@@ -27,11 +27,16 @@ export default function Archive() {
       });
   }, []);
 
-  console.log("archiveArr", archiveArr);
+  const handleUnArchive = () => {
+    setIsArchived(false)
+    console.log("archive");
+    
+  //  addToArchiveNotes()
+  };
   return (
     <div>
-      <Header/>
-      <Asidebar/>
+      <Header />
+      <Asidebar />
       <h2 className="text text1">Archive note- </h2>
       <div className="parentDiv">
         {archiveArr.map((note, index) => {
@@ -61,7 +66,7 @@ export default function Archive() {
                   <ImageOutlinedIcon />
                 </IconButton>
                 <IconButton sx={{ p: "10px" }}>
-                  <ArchiveOutlinedIcon />
+                  <ArchiveOutlinedIcon onClick={handleUnArchive} />
                 </IconButton>
                 <IconButton sx={{ p: "10px" }}>
                   <MoreVertOutlinedIcon />

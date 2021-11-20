@@ -22,6 +22,7 @@ export default function ColorPopper(props) {
   const { handleNoteColor ,noteId} = props;
 
   const colors = [
+    "#FFFFFF",
     "#f44336",
     "#e91e63",
     "#9c27b0",
@@ -36,7 +37,7 @@ export default function ColorPopper(props) {
     "#cddc39",
     "#ffeb3b",
     "#ffc107",
-    "#ff9800",
+    // "#ff9800",
     "#ff5722",
   ];
 
