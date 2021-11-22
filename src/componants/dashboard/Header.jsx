@@ -22,12 +22,12 @@ export default class Header extends Component {
         <header>
           <div className="left-head">
             <div className="hmbrger-icon">
-              <IconButton>
+              <IconButton title="Main menu">
                 <MenuIcon />
               </IconButton>
             </div>
             <div>
-              <IconButton>
+              <IconButton title="Fundoo">
                 <img
                   src="https://www.gstatic.com/images/branding/product/2x/keep_2020q4_48dp.png"
                   height="45px"
@@ -38,28 +38,28 @@ export default class Header extends Component {
 
             <span>Fundoo</span>
           </div>
-          <div className="search-bar">
+          <div className="search-bar" title="Search">
             <SearchIcon className="searchIcon" />
             <InputBase placeholder="Search…" fullWidth />
           </div>
           <div className="right-head">
             <div className="refresh">
-              <IconButton>
+              <IconButton title="Refresh">
                 <RefreshSharpIcon />
               </IconButton>
             </div>
-            <div className="list-view">
+            <div className="list-view" title="Grid view">
               <IconButton>
                 <ViewStreamSharpIcon />
               </IconButton>
             </div>
-            <div className="setting">
+            <div className="setting" title="Setting">
               <IconButton>
                 <SettingsOutlinedIcon />
               </IconButton>
             </div>
             <div className="apps">
-              <IconButton>
+              <IconButton title="Apps">
                 <AppsOutlinedIcon />
               </IconButton>
             </div>

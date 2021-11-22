@@ -6,7 +6,7 @@ import {
 } from "../../services/service";
 import ColorPopper from "./ColorPopper";
 import "./ViewNotes.scss";
-import { IconButton, Paper, Button } from "@material-ui/core";
+import { IconButton, Paper } from "@material-ui/core";
 import BrushOutlinedIcon from "@mui/icons-material/BrushOutlined";
 import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
@@ -21,10 +21,28 @@ export default function ViewNotes({ data, handleArchive, getAllNotes }) {
   // console.log("response data inside viewnote", data);
   const [color, setColor] = useState("");
   const [note, setNote] = useState({
-    title: "",
-    description: "",
-    id: "",
+    isDeleted: "false",
   });
+
+  // trash note
+  const trashNote = (note) => {
+    setNote({
+      isDeleted: true,
+    });
+    const obj = {
+      noteIdList: [note.id],
+      isDeleted: true,
+    };
+    console.log("objf", obj);
+    addToTrashNotes(obj)
+      .then((response) => {
+        console.log("trash response", response);
+        getAllNotes();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const [open, setOpen] = useState(false);
 
@@ -85,26 +103,6 @@ export default function ViewNotes({ data, handleArchive, getAllNotes }) {
       });
   };
 
-  // trash note
-  const trashNote = (note) => {
-    // console.log("tracccf", note);
-    let obj = {
-      title:note.title,
-      description:note.description,
-      id:note.id,
-      userId:note.user.id
-    };
-    console.log("obj", obj);
-    addToTrashNotes(obj)
-      .then((response) => {
-        console.log("trash response", response);
-        getAllNotes();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   const style = {
     position: "absolute",
     top: "50%",
@@ -122,7 +120,7 @@ export default function ViewNotes({ data, handleArchive, getAllNotes }) {
     <div className="parentDiv">
       {/* view note */}
       {data.map((note, index) => {
-        if (note.isArchived === false) {
+        if (note.isArchived === false && note.isDeleted === false) {
           return (
             <Paper
               key={index}
@@ -139,28 +137,36 @@ export default function ViewNotes({ data, handleArchive, getAllNotes }) {
                 <p className="textDesc">{note.description}</p>
               </div>
               <div className="iconbtn">
-                <IconButton>
+                <IconButton title="Remind me">
                   <AddAlertOutlinedIcon />
                 </IconButton>
-                <IconButton>
+                <IconButton title="Draw">
                   <BrushOutlinedIcon />
                 </IconButton>
-                <IconButton sx={{ p: "10px" }}>
+                <IconButton sx={{ p: "10px" }} title="Change color">
                   <ColorPopper
                     handleNoteColor={handleNoteColor}
                     noteId={note.id}
                   />
                 </IconButton>
-                <IconButton sx={{ p: "10px" }}>
+                <IconButton sx={{ p: "10px" }} title="Add image">
                   <ImageOutlinedIcon />
                 </IconButton>
-                <IconButton sx={{ p: "10px" }}>
-                  <ArchiveOutlinedIcon onClick={() => handleArchive(note)} />
+                <IconButton
+                  sx={{ p: "10px" }}
+                  onClick={() => handleArchive(note)}
+                  title="Archive"
+                >
+                  <ArchiveOutlinedIcon />
                 </IconButton>
-                <IconButton sx={{ p: "10px" }}>
-                  <DeleteOutlinedIcon onClick={() => trashNote(note)} />
+                <IconButton
+                  sx={{ p: "10px" }}
+                  onClick={() => trashNote(note)}
+                  title="Delete"
+                >
+                  <DeleteOutlinedIcon />
                 </IconButton>
-                <IconButton sx={{ p: "10px" }}>
+                <IconButton sx={{ p: "10px" }} title="more">
                   <MoreVertOutlinedIcon />
                 </IconButton>
               </div>
@@ -226,12 +232,12 @@ export default function ViewNotes({ data, handleArchive, getAllNotes }) {
             <IconButton sx={{ p: "10px" }}>
               <MoreVertOutlinedIcon />
             </IconButton>
-            <Button
+            <IconButton
               className="closebtn"
               onClick={() => submitUpdateNote(note.id)}
             >
               close
-            </Button>
+            </IconButton>
           </div>
         </Box>
       </Modal>

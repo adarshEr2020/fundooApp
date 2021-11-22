@@ -65,7 +65,7 @@ export const updateNotes = async (obj) => {
 
 export const addToTrashNotes = async (obj) => {
     let response = await axios.post(`${url}/notes/trashNotes`, obj, config);
-    return response;
+        return response;
 }
 
 export const getAllTrashNotes = async()=>{

@@ -14,30 +14,44 @@ import Asidebar from "./Asidebar";
 
 export default function Archive() {
   const [archiveArr, setArchiveArr] = useState([]);
-  const [isArchived,setIsArchived] = useState(true)
+  const [isArchived, setIsArchived] = useState(true);
 
   // request for archive note
-  useEffect(() => {
+  const allArchiveNote = () => {
     getArchiveNoteList()
       .then((response) => {
         setArchiveArr(response.data);
+        console.log(response);
       })
       .catch((err) => {
         console.warn(err);
       });
+  };
+
+  useEffect(() => {
+    allArchiveNote();
   }, []);
 
-  const handleUnArchive = () => {
-    setIsArchived(false)
-    console.log("archive");
-    
-  //  addToArchiveNotes()
+  const handleUnArchive = (note) => {
+    setIsArchived(!isArchived);
+    const obj = {
+      noteIdList: [note.id],
+      isArchived: false,
+    };
+    addToArchiveNotes(obj)
+      .then((response) => {
+        console.log("after unarchived", response);
+        allArchiveNote();
+      })
+      .catch((err) => {
+        console.warn(err);
+      });
   };
   return (
     <div>
       <Header />
       <Asidebar />
-      <h2 className="text text1">Archive note- </h2>
+      <h2 className="head-text text1">Archive note- </h2>
       <div className="parentDiv">
         {archiveArr.map((note, index) => {
           return (
@@ -53,22 +67,26 @@ export default function Archive() {
               </div>
 
               <div className="iconbtn">
-                <IconButton>
+                <IconButton title="Remind me">
                   <AddAlertOutlinedIcon />
                 </IconButton>
-                <IconButton>
+                <IconButton title="Draw">
                   <BrushOutlinedIcon />
                 </IconButton>
-                <IconButton sx={{ p: "10px" }}>
+                <IconButton title="Change color" sx={{ p: "10px" }}>
                   <ColorLensOutlinedIcon />
                 </IconButton>
-                <IconButton sx={{ p: "10px" }}>
+                <IconButton title="Add image" sx={{ p: "10px" }}>
                   <ImageOutlinedIcon />
                 </IconButton>
-                <IconButton sx={{ p: "10px" }}>
-                  <ArchiveOutlinedIcon onClick={handleUnArchive} />
+                <IconButton
+                  title="Archive"
+                  sx={{ p: "10px" }}
+                  onClick={() => handleUnArchive(note)}
+                >
+                  <ArchiveOutlinedIcon />
                 </IconButton>
-                <IconButton sx={{ p: "10px" }}>
+                <IconButton title="More" sx={{ p: "10px" }}>
                   <MoreVertOutlinedIcon />
                 </IconButton>
               </div>

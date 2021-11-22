@@ -8,19 +8,22 @@ import { IconButton } from "@material-ui/core";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 
 export default function Trash() {
-  const [trashArr, setTrashArr] = useState([    ]);
+  const [trashArr, setTrashArr] = useState([]);
 
   //   request for get all trash note
 
-  useEffect(() => {
+  const allTrashNotes = () => {
     getAllTrashNotes()
       .then((response) => {
-        console.log(response.data);
-        setTrashArr([...trashArr, response.data]);
+        console.log("trashNots", response.data);
+        setTrashArr([...trashArr,response.data.data]);
       })
       .catch((err) => {
         console.warn(err);
       });
+  };
+  useEffect(() => {
+    allTrashNotes();
   }, []);
 
   return (
@@ -37,20 +40,18 @@ export default function Trash() {
               key={index}
               style={{ backgroundColor: `${note.color}` }}
             >
-              <div>
+               <div>
                 <div className="textTitle">{note.title}</div>
                 <div className="textDesc">{note.description}</div>
               </div>
-
               <div className="iconbtn">
-              <IconButton sx={{ p: "10px" }}>
+                <IconButton sx={{ p: "10px" }}>
                   <DeleteOutlinedIcon />
                 </IconButton>
                 <IconButton sx={{ p: "10px" }}>
                   <DeleteOutlinedIcon />
                 </IconButton>
               </div>
-             
             </Paper>
           );
         })}
