@@ -51,7 +51,6 @@ class Login extends Component {
   render() {
     return (
       <div id="main" className="mainDiv">
-        {/* <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" width="75" alt="google.img" /> */}
        <h1 className="FundooIcon">Fundoo</h1>
         <h1>Sign in</h1>
         <h3>Use your Google Account</h3>

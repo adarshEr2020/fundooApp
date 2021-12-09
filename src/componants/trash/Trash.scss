@@ -1,6 +1,6 @@
 .parentDiv {
   margin-top: 20px;
-  // margin-right: 20px;
+  margin-right: 20px;
   display: flexbox;
   width: 80%;
   height: 90vh;
@@ -26,4 +26,8 @@
 }
 .title-text {
   width: fit-content;
+}
+.noteDiv{
+  flex-wrap: wrap;
+  width: 300px;
 }

@@ -7,6 +7,7 @@
   left: 200px;
   width: 80vw;
   flex-wrap: wrap;
+  // border: 1px solid blue;
 }
 .noteDiv {
   height: 150px;
@@ -39,4 +40,15 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin-left: 15px;
   border: none;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .parentDiv{
+    margin-left: -130px;
+    width: 50vw;
+  }
+  .noteDiv {
+    width: 380px;
+  }
 }

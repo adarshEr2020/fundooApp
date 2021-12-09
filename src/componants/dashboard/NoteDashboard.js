@@ -65,7 +65,7 @@ export default class NoteDashboard extends Component {
                 <Asidebar
                     handleDrawerToggle={this.handleDrawerToggle}
                     open={this.state.open} />
-                <Note getAllNotes={this.getAllNotes} />
+                <Note getAllNotes={this.getAllNotes}/>
                 <ViewNotes data={data}
                     handleArchive={this.handleArchive}
                     handleNoteColor={this.handleNoteColor}

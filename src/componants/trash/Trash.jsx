@@ -16,12 +16,14 @@ export default function Trash() {
     getAllTrashNotes()
       .then((response) => {
         console.log("trashNots", response.data);
-        setTrashArr([...trashArr,response.data.data]);
+        setTrashArr(response?.data?.data);
       })
       .catch((err) => {
         console.warn(err);
       });
   };
+
+  console.log("tssh arry",trashArr);
   useEffect(() => {
     allTrashNotes();
   }, []);
@@ -32,29 +34,27 @@ export default function Trash() {
       <Asidebar />
       <h2 className="text text1">Bin- </h2>
       <div className="parentDiv">
-        {trashArr.map((note, index) => {
-          return (
-            <Paper
-              className="noteDiv"
-              elevation={5}
-              key={index}
-              style={{ backgroundColor: `${note.color}` }}
-            >
-               <div>
-                <div className="textTitle">{note.title}</div>
-                <div className="textDesc">{note.description}</div>
-              </div>
-              <div className="iconbtn">
-                <IconButton sx={{ p: "10px" }}>
-                  <DeleteOutlinedIcon />
-                </IconButton>
-                <IconButton sx={{ p: "10px" }}>
-                  <DeleteOutlinedIcon />
-                </IconButton>
-              </div>
-            </Paper>
-          );
-        })}
+        {trashArr?.data?.map((note, index) => (
+          <Paper
+            className="noteDiv"
+            elevation={5}
+            key={index}
+            style={{ backgroundColor: `${note.color}` }}
+          >
+            <div>
+              <div className="textTitle">{note.title}</div>
+              <div className="textDesc">{note.description}</div>
+            </div>
+            <div className="iconbtn">
+              <IconButton sx={{ p: "10px" }}>
+                <DeleteOutlinedIcon />
+              </IconButton>
+              <IconButton sx={{ p: "10px" }}>
+                <DeleteOutlinedIcon />
+              </IconButton>
+            </div>
+          </Paper>
+        ))}
       </div>
     </div>
   );

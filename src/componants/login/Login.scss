@@ -73,3 +73,18 @@ p {
   font-size: 13px;
   margin-bottom: 10px;
 }
+
+@media only screen and (max-width: 600px) {
+  // body {
+  //   background-color: lightblue;
+  // }
+  .mainDiv {
+    width: 280px;
+    min-height: 350px;
+    // border: none;
+    margin-left: -15px;
+  }
+  #outlined-basic{
+    width: 250px;
+  }
+}

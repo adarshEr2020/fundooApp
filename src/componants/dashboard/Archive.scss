@@ -30,3 +30,22 @@
 .title-text {
   width: fit-content;
 }
+
+@media only screen and (max-width: 600px) {
+  .parentDiv{
+    margin-left: -130px;
+    width: 50vw;
+  }
+  .noteDiv {
+    width: 380px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  
+  .noteDiv {
+    // display: flex;
+    flex-wrap: wrap;
+    width: 380px;
+  }
+}

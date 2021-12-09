@@ -1,7 +1,4 @@
 .main-div {
-  margin: 0;
-  overflow: hidden;
-  // border: 1px solid gray;
   padding-bottom: 10px;
 
   .closebtn {
@@ -22,6 +19,7 @@
     outline: none;
     padding: 10px;
     overflow: hidden;
+    cursor: pointer;
   }
 
   .main-desc-box {
@@ -29,4 +27,9 @@
     border-radius: 10px;
     // border:1px solid red
   }
+  
+}
+
+@media only screen and (max-width: 600) {
+ 
 }
