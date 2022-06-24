@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   changesColorNotes,
   updateNotes,
@@ -23,6 +23,21 @@ export default function ViewNotes({ data, handleArchive, getAllNotes }) {
   const [note, setNote] = useState({
     isDeleted: "false",
   });
+  const [filterNotes, setFilterNotes] = useState([]);
+  console.log(filterNotes);
+  // console.log("data", data);
+
+  // filter all note which not achived and not deleted
+  const filterDisplayNotes = (data) => {
+    const filterData = data.filter(
+      (note) => note.isArchived === false && note.isDeleted === false
+    );
+    setFilterNotes(filterData);
+  };
+
+  useEffect(() => {
+    filterDisplayNotes(data);
+  }, [data]);
 
   // trash note
   const trashNote = (note) => {
@@ -119,60 +134,56 @@ export default function ViewNotes({ data, handleArchive, getAllNotes }) {
   return (
     <div className="parentDiv">
       {/* view note */}
-      {data.map((note, index) => {
-        if (note.isArchived === false && note.isDeleted === false) {
-          return (
-            <Paper
-              key={index}
-              className="noteDiv"
-              elevation={5}
-              style={{ backgroundColor: `${note.color}` }}
+      {filterNotes.map((note, index) => {
+        return (
+          <Paper
+            key={index}
+            className="noteDiv"
+            elevation={5}
+            style={{ backgroundColor: `${note.color}` }}
+          >
+            <div
+              onClick={() => handleOpen(note.title, note.description, note.id)}
             >
-              <div
-                onClick={() =>
-                  handleOpen(note.title, note.description, note.id)
-                }
+              <p className="textTitle">{note.title}</p>
+              <p className="textDesc">{note.description}</p>
+            </div>
+            <div className="iconbtn">
+              <IconButton title="Remind me">
+                <AddAlertOutlinedIcon />
+              </IconButton>
+              <IconButton title="Draw">
+                <BrushOutlinedIcon />
+              </IconButton>
+              <IconButton sx={{ p: "10px" }} title="Change color">
+                <ColorPopper
+                  handleNoteColor={handleNoteColor}
+                  noteId={note.id}
+                />
+              </IconButton>
+              <IconButton sx={{ p: "10px" }} title="Add image">
+                <ImageOutlinedIcon />
+              </IconButton>
+              <IconButton
+                sx={{ p: "10px" }}
+                onClick={() => handleArchive(note)}
+                title="Archive"
               >
-                <p className="textTitle">{note.title}</p>
-                <p className="textDesc">{note.description}</p>
-              </div>
-              <div className="iconbtn">
-                <IconButton title="Remind me">
-                  <AddAlertOutlinedIcon />
-                </IconButton>
-                <IconButton title="Draw">
-                  <BrushOutlinedIcon />
-                </IconButton>
-                <IconButton sx={{ p: "10px" }} title="Change color">
-                  <ColorPopper
-                    handleNoteColor={handleNoteColor}
-                    noteId={note.id}
-                  />
-                </IconButton>
-                <IconButton sx={{ p: "10px" }} title="Add image">
-                  <ImageOutlinedIcon />
-                </IconButton>
-                <IconButton
-                  sx={{ p: "10px" }}
-                  onClick={() => handleArchive(note)}
-                  title="Archive"
-                >
-                  <ArchiveOutlinedIcon />
-                </IconButton>
-                <IconButton
-                  sx={{ p: "10px" }}
-                  onClick={() => trashNote(note)}
-                  title="Delete"
-                >
-                  <DeleteOutlinedIcon />
-                </IconButton>
-                <IconButton sx={{ p: "10px" }} title="more">
-                  <MoreVertOutlinedIcon />
-                </IconButton>
-              </div>
-            </Paper>
-          );
-        }
+                <ArchiveOutlinedIcon />
+              </IconButton>
+              <IconButton
+                sx={{ p: "10px" }}
+                onClick={() => trashNote(note)}
+                title="Delete"
+              >
+                <DeleteOutlinedIcon />
+              </IconButton>
+              <IconButton sx={{ p: "10px" }} title="more">
+                <MoreVertOutlinedIcon />
+              </IconButton>
+            </div>
+          </Paper>
+        );
       })}
 
       {/* note popup modal  */}
